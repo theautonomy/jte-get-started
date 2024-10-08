@@ -65,5 +65,17 @@ class AppTest {
         System.out.println(output.toString());
     }
 
+    @Test
+    void testTemplateCallWithDefaultParameter() {
+        StringOutput output = new StringOutput();
+        Loop model = new Loop(Arrays.asList(new Loop.Entry("Mark"), new Loop.Entry("Smith")));
+        Map<String, Object> params = new HashMap<>();
+        params.put("model", model);
+        params.put("name", "Mark");
+        templateEngine.render("use-sub-loop1.jte", params, output); 
+        System.out.println(output.toString());
+    }
+
+
 
 }

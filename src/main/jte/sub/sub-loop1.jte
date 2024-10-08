@@ -1,10 +1,14 @@
 @import com.mycompany.app.Loop
 
-@import gg.jte.support.ForSupport
-
 @param Loop model 
+@param String name
+@param boolean verbose = false
+
 
 @for(Loop.Entry entry : model.entries())
     <li>${entry.title()}</li>
 @endfor
 
+@if(verbose)
+ ${name} 
+@endif
