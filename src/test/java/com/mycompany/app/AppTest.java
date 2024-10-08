@@ -1,6 +1,9 @@
 package com.mycompany.app;
 
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import com.mycompany.app.EmailService.WelcomeEmailModel;
@@ -39,4 +42,28 @@ class AppTest {
         templateEngine.render("loop.jte", model, output); 
         System.out.println(output.toString());
     }
+
+    @Test
+    void testLoopWithMap() {
+        StringOutput output = new StringOutput();
+        Loop model = new Loop(Arrays.asList(new Loop.Entry("Mark"), new Loop.Entry("Smith")));
+        // Loop model1 = new Loop(Arrays.asList(new Loop.Entry("Mark")));
+        Loop model1 = new Loop(Collections.<Loop.Entry>emptyList());  
+        Map<String, Object> params = new HashMap<>();
+        params.put("model", model);
+        params.put("model1", model1);
+        templateEngine.render("loop1.jte", params, output); 
+        System.out.println(output.toString());
+
+    }
+
+    @Test
+    void testTemplateCall() {
+        StringOutput output = new StringOutput();
+        Loop model = new Loop(Arrays.asList(new Loop.Entry("Mark"), new Loop.Entry("Smith")));
+        templateEngine.render("use-sub-loop.jte", model, output); 
+        System.out.println(output.toString());
+    }
+
+
 }
