@@ -1,12 +1,12 @@
-@import com.mycompany.app.Loop
+@import com.mycompany.app.Entries
 
-@param Loop model 
+@param Entries model 
 
 !{var entries = model.entries();}
 !{var entry = model.entries().get(0);}
 
 <%-- this doesn't work
-for(Loop.Entry entry : entries)
+for(Entries.Entry entry : entries)
     <li>${entry.title()}</li>
 @endfor
 --%>

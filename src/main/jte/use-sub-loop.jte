@@ -1,7 +1,7 @@
-@import com.mycompany.app.Loop
+@import com.mycompany.app.Entries
 
 @import gg.jte.support.ForSupport
 
-@param Loop model 
+@param Entries entries 
 
-@template.sub.sub-loop(model)
+@template.sub.sub-loop(entries)

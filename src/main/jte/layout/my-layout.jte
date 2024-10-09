@@ -1,9 +1,9 @@
 @import gg.jte.Content
-@import com.mycompany.app.Loop
+@import com.mycompany.app.Entries
 @import com.mycompany.app.EmailService
 
 @param EmailService.EmailModel email
-@param Loop loop
+@param Entries entries
 
 @param Content content
 @param Content footer = null
@@ -13,7 +13,7 @@ ${email.name}
 <body>
     <h1>${email.activationLink}</h1>
     
-    @for(Loop.Entry entry : loop.entries())
+    @for(Entries.Entry entry : entries.entries())
     <li>${entry.title()}</li>
     @endfor
 

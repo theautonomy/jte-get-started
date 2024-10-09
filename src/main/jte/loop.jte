@@ -1,8 +1,8 @@
-@import com.mycompany.app.Loop
+@import com.mycompany.app.Entries
 
 @import gg.jte.support.ForSupport
 
-@param Loop model 
+@param Entries model 
 
 @for(var entryLoop : ForSupport.of(model.entries()))
     <tr class="${(entryLoop.getIndex() + 1) % 2 == 0 ? "even" : "odd"}">
@@ -11,7 +11,7 @@
 @endfor
 
 
-@for(Loop.Entry entry : model.entries())
+@for(Entries.Entry entry : model.entries())
     <li>${entry.title()}</li>
 @endfor
 

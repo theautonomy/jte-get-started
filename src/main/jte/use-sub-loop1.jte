@@ -1,8 +1,8 @@
-@import com.mycompany.app.Loop
+@import com.mycompany.app.Entries
 
 @import gg.jte.support.ForSupport
 
-@param Loop model 
+@param Entries model 
 @param String name
 @param boolean verbose = false
 

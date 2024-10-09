@@ -1,9 +1,9 @@
-@import com.mycompany.app.Loop
+@import com.mycompany.app.Entries
 
-@param Loop model 
-@param Loop model1 
+@param Entries model 
+@param Entries model1 
 
-@for(Loop.Entry entry : model.entries())
+@for(Entries.Entry entry : model.entries())
     <li>${entry.title()}</li>
 @endfor
 

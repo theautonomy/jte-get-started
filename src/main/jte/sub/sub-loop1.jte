@@ -1,11 +1,11 @@
-@import com.mycompany.app.Loop
+@import com.mycompany.app.Entries
 
-@param Loop model 
+@param Entries model 
 @param String name
 @param boolean verbose = false
 
 
-@for(Loop.Entry entry : model.entries())
+@for(Entries.Entry entry : model.entries())
     <li>${entry.title()}</li>
 @endfor
 

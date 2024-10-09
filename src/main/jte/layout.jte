@@ -1,16 +1,16 @@
-@import com.mycompany.app.Loop
+@import com.mycompany.app.Entries
 @import com.mycompany.app.EmailService
 
 @param EmailService.EmailModel email
-@param Loop model
+@param Entries entries
 
 @template.layout.my-layout(
     email = email,
-    loop = model,
+    entries = entries,
     content = @`
-        <p>Welcome, ${model.entries().size()}.</p>
+        <p>Welcome, ${entries.entries().size()}.</p>
     `,
     footer = @`
-        <p>Welcome, ${model.entries().size()}.</p>
+        <p>Welcome, ${entries.entries().size()}.</p>
     `
 )

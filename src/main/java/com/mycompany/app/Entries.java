@@ -2,11 +2,11 @@ package com.mycompany.app;
 
 import java.util.List;
 
-public class Loop {
+public class Entries {
 
     private List<Entry> entries;
 
-    public Loop(List<Entry> entries) {
+    public Entries(List<Entry> entries) {
         this.entries = entries;
     }
 

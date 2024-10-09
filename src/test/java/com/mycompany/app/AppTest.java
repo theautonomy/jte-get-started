@@ -42,7 +42,7 @@ class AppTest {
     @Test
     void testLoop() {
         StringOutput output = new StringOutput();
-        Loop model = new Loop(Arrays.asList(new Loop.Entry("Mark"), new Loop.Entry("Smith")));
+        Entries model = new Entries(Arrays.asList(new Entries.Entry("Mark"), new Entries.Entry("Smith")));
         templateEngine.render("loop.jte", model, output);
         System.out.println(output.toString());
     }
@@ -50,8 +50,8 @@ class AppTest {
     @Test
     void testLoopWithMap() {
         StringOutput output = new StringOutput();
-        Loop model = new Loop(Arrays.asList(new Loop.Entry("Mark"), new Loop.Entry("Smith")));
-        Loop model1 = new Loop(Collections.<Loop.Entry>emptyList());
+        Entries model = new Entries(Arrays.asList(new Entries.Entry("Mark"), new Entries.Entry("Smith")));
+        Entries model1 = new Entries(Collections.<Entries.Entry>emptyList());
         Map<String, Object> params = new HashMap<>();
         params.put("model", model);
         params.put("model1", model1);
@@ -62,7 +62,7 @@ class AppTest {
     @Test
     void testTemplateCall() {
         StringOutput output = new StringOutput();
-        Loop model = new Loop(Arrays.asList(new Loop.Entry("Mark"), new Loop.Entry("Smith")));
+        Entries model = new Entries(Arrays.asList(new Entries.Entry("Mark"), new Entries.Entry("Smith")));
         templateEngine.render("use-sub-loop.jte", model, output);
         System.out.println(output.toString());
     }
@@ -70,7 +70,7 @@ class AppTest {
     @Test
     void testTemplateCallWithDefaultParameter() {
         StringOutput output = new StringOutput();
-        Loop model = new Loop(Arrays.asList(new Loop.Entry("Mark"), new Loop.Entry("Smith")));
+        Entries model = new Entries(Arrays.asList(new Entries.Entry("Mark"), new Entries.Entry("Smith")));
         Map<String, Object> params = new HashMap<>();
         params.put("model", model);
         params.put("name", "Mark");
@@ -88,11 +88,11 @@ class AppTest {
     @Test
     void testContent() {
         StringOutput output = new StringOutput();
-        Loop model = new Loop(Arrays.asList(new Loop.Entry("Mark"), new Loop.Entry("Smith")));
-        EmailService.EmailModel model1 = new EmailModel("Mark Smith", "https://signup.com");
+        Entries entries = new Entries(Arrays.asList(new Entries.Entry("Mark"), new Entries.Entry("Smith")));
+        EmailService.EmailModel emailModel = new EmailModel("Mark Smith", "https://signup.com");
         Map<String, Object> params = new HashMap<>();
-        params.put("model", model);
-        params.put("email", model1);
+        params.put("email", emailModel);
+        params.put("entries", entries);
         templateEngine.render("layout.jte", params, output);
         System.out.println(output.toString());
     }
@@ -100,7 +100,7 @@ class AppTest {
     @Test
     void testVariable() {
         StringOutput output = new StringOutput();
-        Loop model = new Loop(Arrays.asList(new Loop.Entry("Mark"), new Loop.Entry("Smith")));
+        Entries model = new Entries(Arrays.asList(new Entries.Entry("Mark"), new Entries.Entry("Smith")));
         templateEngine.render("variable.jte", model, output);
         System.out.println(output.toString());
     }
