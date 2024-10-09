@@ -1,6 +1,6 @@
-@import com.mycompany.app.EmailService
+@import com.mycompany.app.Email
 
-@param EmailService.EmailModel email
+@param Email.EmailModel email
 
 <%-- This is template comment --%>
 

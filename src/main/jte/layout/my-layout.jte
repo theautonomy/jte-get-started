@@ -1,8 +1,8 @@
 @import gg.jte.Content
 @import com.mycompany.app.Entries
-@import com.mycompany.app.EmailService
+@import com.mycompany.app.Email
 
-@param EmailService.EmailModel email
+@param Email.EmailModel email
 @param Entries entries
 
 @param Content content

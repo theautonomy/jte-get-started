@@ -5,7 +5,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.mycompany.app.EmailService.EmailModel;
+import com.mycompany.app.Email.EmailModel;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -23,7 +23,7 @@ class AppTest {
     }
 
     @Test
-    void test1() {
+    void test() {
         StringOutput output = new StringOutput();
         templateEngine.render(
                 "email.jte", new EmailModel("Mark Smith", "https://signup.com"), output);
@@ -48,7 +48,7 @@ class AppTest {
     }
 
     @Test
-    void testLoopWithMap() {
+    void testLoopWithMapAsParams() {
         StringOutput output = new StringOutput();
         Entries model = new Entries(Arrays.asList(new Entries.Entry("Mark"), new Entries.Entry("Smith")));
         Entries model1 = new Entries(Collections.<Entries.Entry>emptyList());
@@ -68,7 +68,7 @@ class AppTest {
     }
 
     @Test
-    void testTemplateCallWithDefaultParameter() {
+    void testTemplateCallWithDefaultParameterValue() {
         StringOutput output = new StringOutput();
         Entries model = new Entries(Arrays.asList(new Entries.Entry("Mark"), new Entries.Entry("Smith")));
         Map<String, Object> params = new HashMap<>();
@@ -89,7 +89,7 @@ class AppTest {
     void testContent() {
         StringOutput output = new StringOutput();
         Entries entries = new Entries(Arrays.asList(new Entries.Entry("Mark"), new Entries.Entry("Smith")));
-        EmailService.EmailModel emailModel = new EmailModel("Mark Smith", "https://signup.com");
+        Email.EmailModel emailModel = new EmailModel("Mark Smith", "https://signup.com");
         Map<String, Object> params = new HashMap<>();
         params.put("email", emailModel);
         params.put("entries", entries);

@@ -1,7 +1,7 @@
 @import com.mycompany.app.Entries
-@import com.mycompany.app.EmailService
+@import com.mycompany.app.Email
 
-@param EmailService.EmailModel email
+@param Email.EmailModel email
 @param Entries entries
 
 @template.layout.my-layout(

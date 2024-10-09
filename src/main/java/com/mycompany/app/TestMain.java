@@ -4,38 +4,27 @@ import gg.jte.ContentType;
 import gg.jte.TemplateEngine;
 import gg.jte.output.StringOutput;
 
-public class EmailService {
+public class TestMain {
 
     private final TemplateEngine templateEngine;
 
-    public EmailService() {
+    public TestMain() {
         // CodeResolver codeResolver = new DirectoryCodeResolver(Path.of("src/main/jte")); // This is the directory where your .jte files are located.
         // this.templateEngine = TemplateEngine.create(codeResolver, ContentType.Plain); // Two choices: Plain or Html
-
         this.templateEngine = TemplateEngine.createPrecompiled(ContentType.Plain);
     }
 
     public String renderWelcomeEmail(String name, String activationLink) {
         StringOutput output = new StringOutput();
-        templateEngine.render("email.jte", new EmailModel(name, activationLink), output);
+        templateEngine.render("email.jte", new Email.EmailModel(name, activationLink), output);
         return output.toString();
     }
 
     public static void main(String[] args) {
-        EmailService emailService = new EmailService();
-        String emailContent =
-                emailService.renderWelcomeEmail(
+        TestMain main = new TestMain();
+        String emailContent = main.renderWelcomeEmail(
                         "John Doe", "http://example.com/activate?token=abc123");
         System.out.println(emailContent);
     }
 
-    public static class EmailModel {
-        public final String name;
-        public final String activationLink;
-
-        public EmailModel(String name, String activationLink) {
-            this.name = name;
-            this.activationLink = activationLink;
-        }
-    }
 }
