@@ -2,7 +2,7 @@ package com.mycompany.app;
 
 import java.util.List;
 
-public class Conditional {
+public class Condition {
 
     private List<String> entries;
 
@@ -10,7 +10,7 @@ public class Conditional {
         return entries;
     }
 
-    public Conditional(List<String> entries) {
+    public Condition(List<String> entries) {
         this.entries = entries;
     }
 }

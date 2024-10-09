@@ -4,9 +4,12 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
+
+import com.mycompany.app.EmailService.EmailModel;
+
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import com.mycompany.app.EmailService.WelcomeEmailModel;
+
 import gg.jte.ContentType;
 import gg.jte.TemplateEngine;
 import gg.jte.output.StringOutput;
@@ -15,14 +18,15 @@ class AppTest {
     private static TemplateEngine templateEngine;
 
     @BeforeAll
-     static void setup() {
-         templateEngine = TemplateEngine.createPrecompiled(ContentType.Plain);
+    static void setup() {
+        templateEngine = TemplateEngine.createPrecompiled(ContentType.Plain);
     }
 
     @Test
     void test1() {
         StringOutput output = new StringOutput();
-        templateEngine.render("email.jte", new WelcomeEmailModel("Mark Smith", "https://signup.com"), output);
+        templateEngine.render(
+                "email.jte", new EmailModel("Mark Smith", "https://signup.com"), output);
         String result = output.toString();
         System.out.println(result);
     }
@@ -30,8 +34,8 @@ class AppTest {
     @Test
     void testConditional() {
         StringOutput output = new StringOutput();
-        Conditional model = new Conditional(Arrays.asList("hello", "world"));
-        templateEngine.render("conditional.jte", model, output); 
+        Condition model = new Condition(Arrays.asList("hello", "world"));
+        templateEngine.render("conditional.jte", model, output);
         System.out.println(output.toString());
     }
 
@@ -39,7 +43,7 @@ class AppTest {
     void testLoop() {
         StringOutput output = new StringOutput();
         Loop model = new Loop(Arrays.asList(new Loop.Entry("Mark"), new Loop.Entry("Smith")));
-        templateEngine.render("loop.jte", model, output); 
+        templateEngine.render("loop.jte", model, output);
         System.out.println(output.toString());
     }
 
@@ -47,21 +51,19 @@ class AppTest {
     void testLoopWithMap() {
         StringOutput output = new StringOutput();
         Loop model = new Loop(Arrays.asList(new Loop.Entry("Mark"), new Loop.Entry("Smith")));
-        // Loop model1 = new Loop(Arrays.asList(new Loop.Entry("Mark")));
-        Loop model1 = new Loop(Collections.<Loop.Entry>emptyList());  
+        Loop model1 = new Loop(Collections.<Loop.Entry>emptyList());
         Map<String, Object> params = new HashMap<>();
         params.put("model", model);
         params.put("model1", model1);
-        templateEngine.render("loop1.jte", params, output); 
+        templateEngine.render("loop1.jte", params, output);
         System.out.println(output.toString());
-
     }
 
     @Test
     void testTemplateCall() {
         StringOutput output = new StringOutput();
         Loop model = new Loop(Arrays.asList(new Loop.Entry("Mark"), new Loop.Entry("Smith")));
-        templateEngine.render("use-sub-loop.jte", model, output); 
+        templateEngine.render("use-sub-loop.jte", model, output);
         System.out.println(output.toString());
     }
 
@@ -72,14 +74,14 @@ class AppTest {
         Map<String, Object> params = new HashMap<>();
         params.put("model", model);
         params.put("name", "Mark");
-        templateEngine.render("use-sub-loop1.jte", params, output); 
+        templateEngine.render("use-sub-loop1.jte", params, output);
         System.out.println(output.toString());
     }
 
     @Test
     void testTemplateWithVarargs() {
         StringOutput output = new StringOutput();
-        templateEngine.render("varargs.jte", null, output); 
+        templateEngine.render("varargs.jte", null, output);
         System.out.println(output.toString());
     }
 
@@ -87,11 +89,11 @@ class AppTest {
     void testContent() {
         StringOutput output = new StringOutput();
         Loop model = new Loop(Arrays.asList(new Loop.Entry("Mark"), new Loop.Entry("Smith")));
-        EmailService.WelcomeEmailModel model1 = new WelcomeEmailModel("Mark Smith", "https://signup.com");
+        EmailService.EmailModel model1 = new EmailModel("Mark Smith", "https://signup.com");
         Map<String, Object> params = new HashMap<>();
         params.put("model", model);
         params.put("email", model1);
-        templateEngine.render("layout.jte", params, output); 
+        templateEngine.render("layout.jte", params, output);
         System.out.println(output.toString());
     }
 
@@ -99,9 +101,7 @@ class AppTest {
     void testVariable() {
         StringOutput output = new StringOutput();
         Loop model = new Loop(Arrays.asList(new Loop.Entry("Mark"), new Loop.Entry("Smith")));
-        templateEngine.render("variable.jte", model, output); 
+        templateEngine.render("variable.jte", model, output);
         System.out.println(output.toString());
     }
-
-
 }

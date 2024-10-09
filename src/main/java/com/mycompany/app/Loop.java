@@ -3,7 +3,7 @@ package com.mycompany.app;
 import java.util.List;
 
 public class Loop {
-    
+
     private List<Entry> entries;
 
     public Loop(List<Entry> entries) {
@@ -14,6 +14,5 @@ public class Loop {
         return entries;
     }
 
-    public static record  Entry(String title) { }
-    
+    public static record Entry(String title) {}
 }

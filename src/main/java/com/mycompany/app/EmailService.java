@@ -17,21 +17,23 @@ public class EmailService {
 
     public String renderWelcomeEmail(String name, String activationLink) {
         StringOutput output = new StringOutput();
-        templateEngine.render("email.jte", new WelcomeEmailModel(name, activationLink), output);
+        templateEngine.render("email.jte", new EmailModel(name, activationLink), output);
         return output.toString();
     }
 
     public static void main(String[] args) {
         EmailService emailService = new EmailService();
-        String emailContent = emailService.renderWelcomeEmail("John Doe", "http://example.com/activate?token=abc123");
+        String emailContent =
+                emailService.renderWelcomeEmail(
+                        "John Doe", "http://example.com/activate?token=abc123");
         System.out.println(emailContent);
     }
 
-    public static class WelcomeEmailModel {
+    public static class EmailModel {
         public final String name;
         public final String activationLink;
 
-        public WelcomeEmailModel(String name, String activationLink) {
+        public EmailModel(String name, String activationLink) {
             this.name = name;
             this.activationLink = activationLink;
         }

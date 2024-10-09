@@ -2,7 +2,7 @@
 @import com.mycompany.app.Loop
 @import com.mycompany.app.EmailService
 
-@param EmailService.WelcomeEmailModel email
+@param EmailService.EmailModel email
 @param Loop loop
 
 @param Content content

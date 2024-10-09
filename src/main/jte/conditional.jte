@@ -1,11 +1,11 @@
-@import com.mycompany.app.Conditional
+@import com.mycompany.app.Condition
 
-@param Conditional model
+@param Condition condition
 
-@if(model.entries().isEmpty())
+@if(condition.entries().isEmpty())
     I have no entries!
-@elseif(model.entries().size() == 1)
+@elseif(condition.entries().size() == 1)
     I have one entry!
 @else
-    I have ${model.entries().size()} entries!
+    I have ${condition.entries().size()} entries!
 @endif
