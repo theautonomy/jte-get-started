@@ -1,11 +1,8 @@
 package com.mycompany.app;
 
-import java.nio.file.Path;
-import gg.jte.CodeResolver;
 import gg.jte.ContentType;
 import gg.jte.TemplateEngine;
 import gg.jte.output.StringOutput;
-import gg.jte.resolve.DirectoryCodeResolver;
 
 public class EmailService {
 

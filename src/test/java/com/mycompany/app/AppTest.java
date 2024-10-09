@@ -76,6 +76,32 @@ class AppTest {
         System.out.println(output.toString());
     }
 
+    @Test
+    void testTemplateWithVarargs() {
+        StringOutput output = new StringOutput();
+        templateEngine.render("varargs.jte", null, output); 
+        System.out.println(output.toString());
+    }
+
+    @Test
+    void testContent() {
+        StringOutput output = new StringOutput();
+        Loop model = new Loop(Arrays.asList(new Loop.Entry("Mark"), new Loop.Entry("Smith")));
+        EmailService.WelcomeEmailModel model1 = new WelcomeEmailModel("Mark Smith", "https://signup.com");
+        Map<String, Object> params = new HashMap<>();
+        params.put("model", model);
+        params.put("email", model1);
+        templateEngine.render("layout.jte", params, output); 
+        System.out.println(output.toString());
+    }
+
+    @Test
+    void testVariable() {
+        StringOutput output = new StringOutput();
+        Loop model = new Loop(Arrays.asList(new Loop.Entry("Mark"), new Loop.Entry("Smith")));
+        templateEngine.render("variable.jte", model, output); 
+        System.out.println(output.toString());
+    }
 
 
 }
