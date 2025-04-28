@@ -13,4 +13,5 @@ public class Condition {
     public Condition(List<String> entries) {
         this.entries = entries;
     }
+
 }
